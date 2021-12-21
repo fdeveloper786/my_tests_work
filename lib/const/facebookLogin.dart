@@ -24,8 +24,9 @@ class _FacebookLoginState extends State<FacebookLogin> {
         },
         child: Scaffold(
           body:Container(
+            color:Colors.blue,
             child:Center(
-              child:Text('helo fb')
+              child:Text('facebook login')
             )
           )
         )
