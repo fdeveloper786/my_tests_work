@@ -5,7 +5,8 @@ import 'package:contact_picker/contact_picker.dart';
 import 'package:tests_app/const/Methods.dart';
 import 'package:tests_app/const/customWidgets.dart';
 import 'package:tests_app/const/facebookLogin.dart';
-
+import 'const/SqfLit_Database.dart';
+import 'const/video_inview_notifier.dart';
 import 'currentLocation.dart';
 import 'googleLogin.dart';
 
@@ -14,18 +15,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home:  CommonAppList()//GoogleLogin()//MyLocation(),//MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home:
+            CommonAppList() //GoogleLogin()//MyLocation(),//MyHomePage(title: 'Flutter Demo Home Page'),
+        );
   }
 }
 
@@ -44,18 +46,20 @@ class _CommonAppListState extends State<CommonAppList> {
         title: Text('Common App List'),
       ),
       body: Container(
-        color:Colors.greenAccent.withOpacity(0.5),
+        color: Colors.greenAccent.withOpacity(0.5),
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               // Contact
               MyCustomButton(
                 btnTxt: 'Contact Picker',
                 size: 20.0,
                 color: Colors.white,
-                methods: (){
-                  Methods.pageNavigate(context,MyHomePage());
+                methods: () {
+                  Methods.pageNavigate(context, MyHomePage());
                 },
               ),
               // My Location
@@ -63,8 +67,8 @@ class _CommonAppListState extends State<CommonAppList> {
                 btnTxt: 'Current Location',
                 size: 20.0,
                 color: Colors.white,
-                methods: (){
-                  Methods.pageNavigate(context,MyLocation());
+                methods: () {
+                  Methods.pageNavigate(context, MyLocation());
                   //MyHomePage(title: "Contact Picker App",);
                 },
               ),
@@ -73,8 +77,8 @@ class _CommonAppListState extends State<CommonAppList> {
                 btnTxt: 'Google Login',
                 size: 20.0,
                 color: Colors.white,
-                methods: (){
-                  Methods.pageNavigate(context,GoogleLogin());
+                methods: () {
+                  Methods.pageNavigate(context, GoogleLogin());
                   //MyHomePage(title: "Contact Picker App",);
                 },
               ),
@@ -83,8 +87,28 @@ class _CommonAppListState extends State<CommonAppList> {
                 btnTxt: 'Facebook Login',
                 size: 20.0,
                 color: Colors.white,
-                methods: (){
-                  Methods.pageNavigate(context,FacebookLogin());
+                methods: () {
+                  Methods.pageNavigate(context, FacebookLogin());
+                  //MyHomePage(title: "Contact Picker App",);
+                },
+              ),
+              // SQFlite test
+              MyCustomButton(
+                btnTxt: 'SqfLite Database',
+                size: 20.0,
+                color: Colors.white,
+                methods: () {
+                  Methods.pageNavigate(context, SqfLiteDatabase());
+                  //MyHomePage(title: "Contact Picker App",);
+                },
+              ),
+              // Autoplay Video
+              MyCustomButton(
+                btnTxt: 'Autoplay Video',
+                size: 20.0,
+                color: Colors.white,
+                methods: () {
+                  Methods.pageNavigate(context, AutoplayVideo());
                   //MyHomePage(title: "Contact Picker App",);
                 },
               ),
@@ -104,10 +128,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   final ContactPicker _contactPicker = ContactPicker();
-   Contact? _contact;
+  Contact? _contact;
   @override
   void initState() {
     super.initState();
@@ -116,8 +138,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: (){
-        return Methods.pageNavigate(context,CommonAppList());
+      onWillPop: () {
+        return Methods.pageNavigate(context, CommonAppList());
       },
       child: Scaffold(
         body: Center(
